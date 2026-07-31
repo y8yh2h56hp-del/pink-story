@@ -2,108 +2,103 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Cairo',sans-serif;
+font-family:Tahoma,sans-serif;
 }
 
 body{
-overflow:hidden;
-height:100vh;
-background:#ffd6ec;
-}
-
-.background{
-position:fixed;
-inset:0;
-background:linear-gradient(135deg,#ffd6ec,#ffc2f0,#f5b4ff);
-animation:bg 8s infinite alternate;
-z-index:-1;
-}
-
-@keyframes bg{
-0%{filter:hue-rotate(0deg);}
-100%{filter:hue-rotate(20deg);}
-}
-
-.scene{
-position:absolute;
-width:100%;
-height:100%;
-display:none;
+background:linear-gradient(135deg,#ffd6ea,#ffc2e2,#f7b2ff);
+display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
+height:100vh;
+overflow:hidden;
 }
 
-.scene.active{
-display:flex;
-animation:fade .8s;
-}
-
-@keyframes fade{
-from{
-opacity:0;
-transform:scale(.9);
-}
-to{
-opacity:1;
-transform:scale(1);
-}
-}
-
-.card{
-width:100%;
+.screen{
+display:none;
+width:90%;
 max-width:420px;
-padding:35px;
-border-radius:30px;
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(12px);
+border-radius:25px;
+padding:30px;
 text-align:center;
-background:rgba(255,255,255,.25);
-backdrop-filter:blur(18px);
-box-shadow:0 20px 40px rgba(0,0,0,.15);
-border:1px solid rgba(255,255,255,.4);
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+animation:fade .6s;
 }
 
-h1{
-color:#ff2f8f;
-font-size:34px;
+.active{
+display:block;
+}
+
+h1,h2{
+color:#ff1680;
 margin-bottom:20px;
 }
 
 p{
-font-size:19px;
-line-height:1.9;
-color:#555;
-margin-bottom:25px;
-}
-
-input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:20px;
-text-align:center;
-margin-bottom:20px;
-outline:none;
+font-size:22px;
+color:#444;
+margin:20px 0;
+line-height:1.8;
 }
 
 button{
-border:none;
-padding:15px 35px;
-border-radius:50px;
-background:#ff3f91;
+background:#ff1680;
 color:white;
-font-size:18px;
+border:none;
+padding:16px 35px;
+border-radius:50px;
+font-size:20px;
 cursor:pointer;
+margin-top:20px;
 transition:.3s;
 }
 
 button:hover{
 transform:scale(1.05);
-background:#ff1678;
 }
 
-#msg{
-margin-top:15px;
-color:#ff1678;
+input{
+width:100%;
+padding:15px;
+font-size:20px;
+border-radius:15px;
+border:none;
+outline:none;
+text-align:center;
+margin-top:20px;
+}
+
+#error{
+color:red;
+font-size:18px;
+}
+
+#gift{
+font-size:90px;
+cursor:pointer;
+transition:.4s;
+}
+
+#gift:hover{
+transform:scale(1.2) rotate(10deg);
+}
+
+#giftText{
+margin-top:25px;
+font-size:26px;
+color:#ff1680;
 font-weight:bold;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }

@@ -1,104 +1,73 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Tahoma,sans-serif;
-}
+const PASSWORD = "2002";
 
-body{
-background:linear-gradient(135deg,#ffd6ea,#ffc2e2,#f7b2ff);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-overflow:hidden;
-}
+const welcome = document.getElementById("welcome");
+const passwordPage = document.getElementById("passwordPage");
+const messagePage = document.getElementById("messagePage");
+const giftPage = document.getElementById("giftPage");
 
-.screen{
-display:none;
-width:90%;
-max-width:420px;
-background:rgba(255,255,255,.45);
-backdrop-filter:blur(12px);
-border-radius:25px;
-padding:30px;
-text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-animation:fade .6s;
-}
+const startBtn = document.getElementById("startBtn");
+const checkBtn = document.getElementById("checkBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-.active{
-display:block;
-}
+const password = document.getElementById("password");
+const error = document.getElementById("error");
 
-h1,h2{
-color:#ff1680;
-margin-bottom:20px;
-}
+const typing = document.getElementById("typing");
 
-p{
-font-size:22px;
-color:#444;
-margin:20px 0;
-line-height:1.8;
-}
+const gift = document.getElementById("gift");
+const giftText = document.getElementById("giftText");
 
-button{
-background:#ff1680;
-color:white;
-border:none;
-padding:16px 35px;
-border-radius:50px;
-font-size:20px;
-cursor:pointer;
-margin-top:20px;
-transition:.3s;
-}
+startBtn.onclick = () => {
+    welcome.classList.remove("active");
+    passwordPage.classList.add("active");
+};
 
-button:hover{
-transform:scale(1.05);
-}
+checkBtn.onclick = () => {
 
-input{
-width:100%;
-padding:15px;
-font-size:20px;
-border-radius:15px;
-border:none;
-outline:none;
-text-align:center;
-margin-top:20px;
-}
+    if (password.value === PASSWORD) {
 
-#error{
-color:red;
-font-size:18px;
-}
+        passwordPage.classList.remove("active");
+        messagePage.classList.add("active");
 
-#gift{
-font-size:90px;
-cursor:pointer;
-transition:.4s;
-}
+        const text =
+"اليوم ليس يوماً عادياً... 🎂\n\nكل عام وأنت بخير، أتمنى لك سنة مليئة بالسعادة والنجاح وتحقيق كل الأمنيات. 💖";
 
-#gift:hover{
-transform:scale(1.2) rotate(10deg);
-}
+        let i = 0;
 
-#giftText{
-margin-top:25px;
-font-size:26px;
-color:#ff1680;
-font-weight:bold;
-}
+        typing.innerHTML = "";
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+        const timer = setInterval(() => {
+
+            typing.innerHTML += text.charAt(i);
+
+            i++;
+
+            if (i >= text.length) {
+                clearInterval(timer);
+            }
+
+        }, 45);
+
+    } else {
+
+        error.innerHTML = "❌ الرمز غير صحيح";
+
+    }
+
+};
+
+nextBtn.onclick = () => {
+
+    messagePage.classList.remove("active");
+    giftPage.classList.add("active");
+
+};
+
+gift.onclick = () => {
+
+    gift.innerHTML = "🎉";
+
+    giftText.innerHTML =
+"🎂 عيد ميلاد سعيد 💖<br><br>أتمنى لك أجمل الأيام وأروع الذكريات 🌸";
+
+};

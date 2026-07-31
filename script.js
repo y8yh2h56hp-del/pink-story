@@ -55,3 +55,43 @@ function createSparkle(){
 }
 
 setInterval(createSparkle,500);
+function createButterfly(){
+
+    const b=document.createElement("img");
+
+    b.src="https://upload.wikimedia.org/wikipedia/commons/0/05/Butterfly_icon.svg";
+
+    b.className="butterfly";
+
+    b.style.left="-80px";
+
+    b.style.top=(Math.random()*80+10)+"vh";
+
+    document.body.appendChild(b);
+
+    let x=-80;
+    let y=parseFloat(b.style.top);
+
+    const fly=setInterval(()=>{
+
+        x+=2;
+
+        y+=Math.sin(x/40);
+
+        b.style.left=x+"px";
+
+        b.style.top=y+"px";
+
+        if(x>window.innerWidth+100){
+
+            clearInterval(fly);
+
+            b.remove();
+
+        }
+
+    },20);
+
+}
+
+setInterval(createButterfly,2500);

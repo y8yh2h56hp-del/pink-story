@@ -101,3 +101,19 @@ button:hover{
         transform:translateY(0) scale(1);
     }
 }
+.butterfly{
+    position:fixed;
+    width:60px;
+    z-index:999;
+    pointer-events:none;
+    animation:flap .35s infinite alternate;
+}
+
+@keyframes flap{
+    from{
+        transform:scale(1) rotate(-6deg);
+    }
+    to{
+        transform:scale(1.08) rotate(6deg);
+    }
+}
